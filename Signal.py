@@ -64,65 +64,6 @@ if __name__ == '__main__':
                            rsivalue = rsi(close,14)
                            atrvalue = atr(close,4)
                            rsiicon = ''
-                           if rsivalue[-1] < 30:
-                            rsiicon = ' \U0001F7E9'                           
-                           elif rsivalue[-1] >=30 and rsivalue[-1] < 50:
-                            rsiicon = ' \U0001F7E8'
-                           elif rsivalue[-1] >=50 and rsivalue[-1] < 70:
-                            rsiicon = ' \U0001F7E7'
-                           elif rsivalue[-1] >=70:
-                            rsiicon = ' \U0001F7E5'
-                           doji = abs(open[-1] - close[-1])<=(high[-1]-low[-1])*0.05
-                           BearishHarami = (close[-2] > open[-2]) and (open[-1] > close[-1]) and (open[-1] <= close[-2]) and (open[-2] <= close[-1]) and (open[-1] - close[-1] < close[-2] - open[-2])
-                           BullishHarami = (open[-2] > close[-2]) and (close[-1] > open[-1]) and (close[-1] <= open[-2]) and (close[-2] <= open[-1]) and (close[-1] - open[-1] < open[-2] - close[-2])
-                           BearishEngulfing = (close[-2] > open[-2]) and (open[-1] > close[-1]) and (open[-1] >= close[-2]) and (open[-2] >= close[-1]) and (open[-1] - close[-1] > close[-2] - open[-2] )
-                           BullishEngulfing = (open[-2] > close[-2]) and (close[-1] > open[-1]) and (close[-1] >= open[-2]) and (close[-2] >= open[-1]) and (close[-1] - open[-1] > open[-2] - close[-2] )
-                           EveningStar = (close[-3] > open[-3] and min(open[-2], close[-2]) > close[-3] and open[-1] < min(open[-2], close[-2]) and close[-1] < open[-1] )
-                           MorningStar = (close[-3] < open[-3] and max(open[-2], close[-2]) < close[-3] and open[-1] > max(open[-2], close[-2]) and close[-1] > open[-1])
-                           PiercingLine = (close[-2] < open[-2] and  open[-1] < low[-2] and close[-1] > (close[-2] + ((open[-2] - close[-2])/2)) and close[-1] < open[-2])
-                           Hammer = (((high[-1] - low[-1])>3*(open[-1] -close[-1])) and  ((close[-1] - low[-1])/(.001 + high[-1] - low[-1]) > 0.6) and ((open[-1] - low[-1])/(.001 + high[-1] - low[-1]) > 0.6))
-
-                           InvertedHammer = (((high[-1] - low[-1])>(3*(open[-1] -close[-1]))) and  ((high[-1] - close[-1])/(0.001 + high[-1] - low[-1]) > 0.6) and ((high[-1] - open[-1])/(0.001 + high[-1] - low[-1]) > 0.6))
-
-                           #BullishBelt = (low[-1] == open[-1] and  open[-1] < lower and open[-1] < close[-1] and close[-1] > ((high[-2] - low[-2]) / 2) + low[-2])
-
-                           BullishKicker = (open[-2]>close[-2] and open[-1]>=open[-2] and close[-1]>open[-1])
-
-                           BearishKicker = (open[-2]<close[-2] and open[-1]<=open[-2] and close[-1]<=open[-1])
-
-                           HangingMan = (((high[-1]-low[-1]>(4*(open[-1]-close[-1])))and((close[-1]-low[-1])/(0.001+high[-1]-low[-1])>=0.75)and((open[-1]-low[-1])/(0.001+high[-1]-low[-1])>=0.75)) and high[-2] < open[-1] and high[-3] < open[-1])
-
-                           DarkCloudCover = ((close[-2]>open[-2])and(((close[-2]+open[-2])/2)>close[-1])and(open[-1]>close[-1])and(open[-1]>close[-2])and(close[-1]>open[-2])and((open[-1]-close[-1])/(.001+(high[-1]-low[-1]))>0.6))
-
-                           candle=""
-                           if doji:
-                            candle = "\U0001F440 Formation: DOJI! \U0001F440"
-#                           elif BullishHarami:
-#                            candle = '\U0001F42E'+"Formation: BULLISH HARAMI!"+'\U0001F42E'
-#                           elif BullishEngulfing:
-#                            candle = '\U0001F42E'*3+"Formation: BULLISH ENGULFING!"+'\U0001F42E'*3
-#                           elif BearishHarami:
-#                            candle = '\U0001F43B'+"Formation: BEARISH HARAMI!"+'\U0001F43B'
-#                           elif BearishEngulfing:
-#                            candle = '\U0001F43B'*3+"Formation: BEARISH ENGULFING!"+'\U0001F43B'*3
-                           elif EveningStar:
-                            candle = '\U0001F43B'+"Formation: EVENING STAR!"+'\U0001F43B'
-                           elif MorningStar:
-                            candle = '\U0001F42E'+"Formation: MORNING STAR!"+'\U0001F42E'
-                           elif PiercingLine:
-                            candle = '\U0001F42E'+"Formation: PIERCING LINE!"+'\U0001F42E'
-                           elif Hammer:
-                            candle = '\U0001F42E'+'Formation: HAMMER!'+'\U0001F42E'
-                           elif InvertedHammer:
-                            candle = '\U0001F42E'+'Formation: INVERTED HAMMER!'+'\U0001F42E'
-                           elif BullishKicker:
-                            candle = '\U0001F42E'*2+'Formation: BULLISH KICKER!'+'\U0001F42E'*2
-                           elif BearishKicker:
-                            candle = '\U0001F43B'*2+'Formation: BEARISH KICKER!'+'\U0001F43B'*2
-                           elif HangingMan:
-                            candle = '\U0001F43B'+'Formation: HANGING MAN'+'\U0001F43B'*2
-                           elif DarkCloudCover:
-                            candle = '\U0001F43B'+'Formation: DARK CLOUD COVER!'+'\U0001F43B'
                            last_closing_price = close[-1]
                            sloss = close[-1]-(atrvalue[-1]*1.7)# (low[-1]+close[-2]+close[-3]+close[-4])/4
                            if sloss < buyavg*0.93 or sloss > buyavg*0.99:
@@ -133,7 +74,7 @@ if __name__ == '__main__':
                            close_finished = close_array[:-1]
                            emax = pandas.DataFrame(close_array)
                            ema1=8
-                           ema2=20      
+                           ema2=20
                            last_ema1 = emax.ewm(span=ema1).mean().iloc[-1,-1]
                            last_ema2 = emax.ewm(span=ema2).mean().iloc[-1,-1]
                            previous_ema1 = emax.ewm(span=ema1).mean().iloc[-2,-1]
@@ -147,12 +88,12 @@ if __name__ == '__main__':
                            minr = df.min()
                            diff = maxr - minr
                            level0 = maxr - (0*diff)     #level 0 tepe noktası
-                           level1 = maxr - (0.236*diff) #%236short 
+                           level1 = maxr - (0.236*diff) #%236short
                            level2 = maxr - (0.382*diff) #%382 önemli direnç/destek (SHORT)
-                           level3 = maxr - (0.5*diff)   #%50 
+                           level3 = maxr - (0.5*diff)   #%50
                            level4 = maxr - (0.618*diff) #%618 önemli direnç destek (LONG)
                            level5 = maxr - (0.786*diff) #%786 alt destek
-                           level6 = maxr - (1*diff)     #%1 dip destek 
+                           level6 = maxr - (1*diff)     #%1 dip destek
                            levela = maxr + (0.382*diff) #tepe1
                            levelb = maxr + (0.618*diff) #tepe2
                            level = 0
@@ -241,9 +182,61 @@ if __name__ == '__main__':
                             hratioval = hr.read()
                             if float(hratioval)<0:iconhash='% \U0001F7E5'
                             elif float(hratioval)>0:iconhash='% \U0001F7E9'
-                            bot.sendMessage(chat_id=id, text=icon+"#"+symbol + " has changed " + str("{0:.1%}".format(rat))+ " in 4 hours!"+icon+"\nLast Price: $"+str("{:.0f}".format(close[-2]))+"\nCurrent Price: $"+ str("{:.0f}".format(close[-1]))+"\nRSI: "+str("{:.2f}".format(rsivalue[-1]))+rsiicon+"\nBTC Dominance: "+str("{:.5}".format(dom.read()))+"\nHash Rate Change: "+str("{:.5}".format(hratioval))+iconhash+"\nFear&Greed Index: (Value: "+str(fngval)+", Status: "+fng+") "+iconfng+"\n\U000026D4Trailing StopLoss: $"+str("{:.0f}".format(sloss))+"\n\n"+candle) 
+                            bot.sendMessage(chat_id=id, text=icon+"#"+symbol + " has changed " + str("{0:.1%}".format(rat))+ " in 4 hours!"+icon+"\nLast Price: $"+str("{:.0f}".format(close[-2]))+"\nCurrent Price: $"+ str("{:.0f}".format(close[-1]))+"\nRSI: "+str("{:.2f}".format(rsivalue[-1]))+rsiicon+"\nBTC Dominance: "+str("{:.5}".format(dom.read()))+"\nHash Rate Change: "+str("{:.5}".format(hratioval))+iconhash+"\nFear&Greed Index: (Value: "+str(fngval)+", Status: "+fng+") "+iconfng+"\n\U000026D4Trailing StopLoss: $"+str("{:.0f}".format(sloss))+"\n\n"+candle)
                            if symbol == 'BTCUSDT':
                             ratio= (close[-1]-close[-2])/close[-2]
+                            if rsivalue[-1] < 30:
+                             rsiicon = ' \U0001F7E9'
+                            elif rsivalue[-1] >=30 and rsivalue[-1] < 50:
+                             rsiicon = ' \U0001F7E8'
+                            elif rsivalue[-1] >=50 and rsivalue[-1] < 70:
+                             rsiicon = ' \U0001F7E7'
+                            elif rsivalue[-1] >=70:
+                             rsiicon = ' \U0001F7E5'
+                            doji = abs(open[-1] - close[-1])<=(high[-1]-low[-1])*0.05
+                            BearishHarami = (close[-2] > open[-2]) and (open[-1] > close[-1]) and (open[-1] <= close[-2]) and (open[-2] <= close[-1]) and (open[-1] - close[-1] < close[-2] - open[-2])
+                            BullishHarami = (open[-2] > close[-2]) and (close[-1] > open[-1]) and (close[-1] <= open[-2]) and (close[-2] <= open[-1]) and (close[-1] - open[-1] < open[-2] - close[-2])
+                            BearishEngulfing = (close[-2] > open[-2]) and (open[-1] > close[-1]) and (open[-1] >= close[-2]) and (open[-2] >= close[-1]) and (open[-1] - close[-1] > close[-2] - open[-2] )
+                            BullishEngulfing = (open[-2] > close[-2]) and (close[-1] > open[-1]) and (close[-1] >= open[-2]) and (close[-2] >= open[-1]) and (close[-1] - open[-1] > open[-2] - close[-2] )
+                            EveningStar = (close[-3] > open[-3] and min(open[-2], close[-2]) > close[-3] and open[-1] < min(open[-2], close[-2]) and close[-1] < open[-1] )
+                            MorningStar = (close[-3] < open[-3] and max(open[-2], close[-2]) < close[-3] and open[-1] > max(open[-2], close[-2]) and close[-1] > open[-1])
+                            PiercingLine = (close[-2] < open[-2] and  open[-1] < low[-2] and close[-1] > (close[-2] + ((open[-2] - close[-2])/2)) and close[-1] < open[-2])
+                            Hammer = (((high[-1] - low[-1])>3*(open[-1] -close[-1])) and  ((close[-1] - low[-1])/(.001 + high[-1] - low[-1]) > 0.6) and ((open[-1] - low[-1])/(.001 + high[-1] - low[-1]) > 0.6))
+                            InvertedHammer = (((high[-1] - low[-1])>(3*(open[-1] -close[-1]))) and  ((high[-1] - close[-1])/(0.001 + high[-1] - low[-1]) > 0.6) and ((high[-1] - open[-1])/(0.001 + high[-1] - low[-1]) > 0.6))
+                            #BullishBelt = (low[-1] == open[-1] and  open[-1] < lower and open[-1] < close[-1] and close[-1] > ((high[-2] - low[-2]) / 2) + low[-2])
+                            BullishKicker = (open[-2]>close[-2] and open[-1]>=open[-2] and close[-1]>open[-1])
+                            BearishKicker = (open[-2]<close[-2] and open[-1]<=open[-2] and close[-1]<=open[-1])
+                            HangingMan = (((high[-1]-low[-1]>(4*(open[-1]-close[-1])))and((close[-1]-low[-1])/(0.001+high[-1]-low[-1])>=0.75)and((open[-1]-low[-1])/(0.001+high[-1]-low[-1])>=0.75)) and high[-2] < open[-1] and high[-3] < open[-1])
+                            DarkCloudCover = ((close[-2]>open[-2])and(((close[-2]+open[-2])/2)>close[-1])and(open[-1]>close[-1])and(open[-1]>close[-2])and(close[-1]>open[-2])and((open[-1]-close[-1])/(.001+(high[-1]-low[-1]))>0.6))
+                            candle=""
+                            if doji:
+                             candle = "\U0001F440 Formation: DOJI! \U0001F440"
+#                            elif BullishHarami:
+#                             candle = '\U0001F42E'+"Formation: BULLISH HARAMI!"+'\U0001F42E'
+#                            elif BullishEngulfing:
+#                             candle = '\U0001F42E'*3+"Formation: BULLISH ENGULFING!"+'\U0001F42E'*3
+#                            elif BearishHarami:
+#                             candle = '\U0001F43B'+"Formation: BEARISH HARAMI!"+'\U0001F43B'
+#                            elif BearishEngulfing:
+#                             candle = '\U0001F43B'*3+"Formation: BEARISH ENGULFING!"+'\U0001F43B'*3
+                            elif EveningStar:
+                             candle = '\U0001F43B'+"Formation: EVENING STAR!"+'\U0001F43B'
+                            elif MorningStar:
+                             candle = '\U0001F42E'+"Formation: MORNING STAR!"+'\U0001F42E'
+                            elif PiercingLine:
+                             candle = '\U0001F42E'+"Formation: PIERCING LINE!"+'\U0001F42E'
+                            elif Hammer:
+                             candle = '\U0001F42E'+'Formation: HAMMER!'+'\U0001F42E'
+                            elif InvertedHammer:
+                             candle = '\U0001F42E'+'Formation: INVERTED HAMMER!'+'\U0001F42E'
+                            elif BullishKicker:
+                             candle = '\U0001F42E'*2+'Formation: BULLISH KICKER!'+'\U0001F42E'*2
+                            elif BearishKicker:
+                             candle = '\U0001F43B'*2+'Formation: BEARISH KICKER!'+'\U0001F43B'*2
+                            elif HangingMan:
+                             candle = '\U0001F43B'+'Formation: HANGING MAN'+'\U0001F43B'*2
+                            elif DarkCloudCover:
+                             candle = '\U0001F43B'+'Formation: DARK CLOUD COVER!'+'\U0001F43B'
                             icon = ''
                             iconfng =''
                             if close[-1]>close[-2]: icon='\U0001F7E2'
@@ -261,7 +254,7 @@ if __name__ == '__main__':
                              elif fng == 'Fear':iconfng = '\U0001F628'
                              elif fng == 'Extreme Fear':iconfng = '\U0001F976'
                              print(fngval, fng)
-                            except:print("FNG Problem") 
+                            except:print("FNG Problem")
                             telegramalert(chatid,ratio,icon,fng,fngval,iconfng)
                             if last_ema1 > last_ema2 and previous_ema1 < previous_ema2:telegramal(chatid)
                            count += 1
@@ -270,7 +263,6 @@ if __name__ == '__main__':
                     print(exp.status_code, flush=True)
                     print(exp.message, flush=True)
             break
-
         except Exception as exp:
             print(exp.status_code, flush=True)
             print(exp.message, flush=True)

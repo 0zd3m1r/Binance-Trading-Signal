@@ -1,10 +1,14 @@
 # Binance-Trading-Signal
 
+Membership: https://forms.gle/pkUKHikomiAc5KFE8
+
+Üyelik: https://forms.gle/7bnJsksZWkuTDEax8
+
 Our members earning every day no matter where the market going. We give the best TA+FA based signals. Subscribe to our Premium Channel and avoid a hundred mistakes, while benefiting from daily wins!
 
 
 💥 Benefits?
-1:   ✅ Get Daily Swing/Position Trading Signals for around 10% - 30 % profit before anyone else 
+1:   ✅ Get Daily Swing/Position Trading Signals for around 10% - 30 % profit before anyone else
 2:   ✅ Get Excellent calculated Entry Point, Targets, Stop-Loss
 3:   ✅ Get Technical Analysis, Fundamental Analysis
 4:   ✅ Coin&Market News / Listing & Delisting will be Posted (Coinbase, Binance, Upbit, Kraken etc.)
@@ -42,9 +46,7 @@ If you have any questions, please contact: @importtime (Telegram)
 💰 You’re Full Amount will be Returned Back to your Same wallet ID
 
 
-After paying, fill this Google form and send your TXID to
-https://t.me/importtime in Telegram.
-
+After paying, fill this Google form and send.
 After simple verification you will be joined.
 
 Keep improving, Keep earning!
